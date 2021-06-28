@@ -371,7 +371,7 @@ GameObject:
   - component: {fileID: 1014975439}
   - component: {fileID: 1014975438}
   - component: {fileID: 1014975443}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: menuSphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -464,7 +464,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1014975437}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.876, z: 0.38}
+  m_LocalPosition: {x: 0, y: 0.876, z: 0.465}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 0}
@@ -482,7 +482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e55be3c18f5dcf4d980d39bfa0a2511, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Arena
+  targetScene: Arena
 --- !u!1 &1810907495
 GameObject:
   m_ObjectHideFlags: 0

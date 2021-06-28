@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class spellParent : MonoBehaviour
+public class spellParentOld : MonoBehaviour
 {
     private GameObject shape;
     private Element element;

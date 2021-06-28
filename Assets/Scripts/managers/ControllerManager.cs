@@ -5,23 +5,8 @@ using UnityEngine;
 using UnityEngine.XR;
 
 
-public sealed class ControllerManager
+public sealed class ControllerManager : Singleton<ControllerManager>
 {
-    private static ControllerManager _instance;
-    private static readonly object padlock = new object();
-    public static ControllerManager Instance
-    {
-        get
-        {
-            lock (padlock)
-            {
-                if (_instance == null)
-                    _instance = new ControllerManager();
-                return _instance;
-            }
-        }
-    }
-
     public enum DeviceOption
     {
         rightController,
@@ -66,14 +51,15 @@ public sealed class ControllerManager
 
     List<InputDevice> inputDevices = new List<InputDevice>();
 
-    private ControllerManager()
+    protected override void Awake()
     {
-        Debug.Log("unity - ControllerManager started");
+        base.Awake();
+
         try
         {
             foreach (ButtonOption option in Enum.GetValues(typeof(ButtonOption)))
             {
-                Debug.Log("unity - loop output " + option);
+                Debug.Log("[ControllerManager] add devices loop " + option);
                 prevDict.TryAdd((DeviceOption.leftController, option), (false, false));
                 prevDict.TryAdd((DeviceOption.rightController, option), (false, false));
                 fixedPrevDict.TryAdd((DeviceOption.leftController, option), (false, false));
@@ -83,10 +69,10 @@ public sealed class ControllerManager
         }
         catch(Exception e)
         {
-            Debug.LogError("unity - ControllerManager could not start\n" + e.Message);
+            Debug.LogError("[ControllerManager] could not start\n" + e.Message);
         }
 
-        Debug.Log("unity - ControllerManager startup finished");
+        Debug.Log("[ControllerManager] startup finished");
     }
 
     #region UIMethods
@@ -114,7 +100,7 @@ public sealed class ControllerManager
         return false;
     }
 
-    public void Update()
+    private void Update()
     {
         foreach (ButtonOption option in Enum.GetValues(typeof(ButtonOption)))
         {
@@ -153,7 +139,7 @@ public sealed class ControllerManager
         return false;
     }
 
-    public void fixedUpdate()
+    private void FixedUpdate()
     {
         foreach (ButtonOption option in Enum.GetValues(typeof(ButtonOption)))
         {
@@ -174,7 +160,7 @@ public sealed class ControllerManager
 
         InputDevices.GetDevicesWithCharacteristics(deviceOptionDict[device], inputDevices);
 
-        if (!inputDevices[0].TryGetFeatureValue(buttonOptionDict[button], out inputValue))
+        if (inputDevices.Count == 0 || !inputDevices[0].TryGetFeatureValue(buttonOptionDict[button], out inputValue))
         {
             //Debug.LogError("unity - input device not found: " + inputDevices[0].name + " : " + inputDevices[0].characteristics);
         }

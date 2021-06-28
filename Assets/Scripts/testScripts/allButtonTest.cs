@@ -10,7 +10,7 @@ public class allButtonTest : MonoBehaviour
     {
         if (testing)
         {
-            Debug.Log("testing - regular loop");
+            Debug.Log("[testing] - regular loop");
             try
             {
                 foreach (ControllerManager.ButtonOption button in
@@ -18,17 +18,17 @@ public class allButtonTest : MonoBehaviour
                 {
                     if (ControllerManager.Instance.getButtonPressing(ControllerManager.DeviceOption.leftController, button))
                     {
-                        Debug.Log("testing - left " + button.ToString() + " regular pressed");
+                        Debug.Log("[testing] - left " + button.ToString() + " regular pressed");
                     }
                     if (ControllerManager.Instance.getButtonPressing(ControllerManager.DeviceOption.rightController, button))
                     {
-                        Debug.Log("testing - right " + button.ToString() + " regular pressed");
+                        Debug.Log("[testing] - right " + button.ToString() + " regular pressed");
                     }
                 }
             }
             catch(Exception e)
             {
-                Debug.LogError("testing - " + e);
+                Debug.LogError("[testing] - " + e);
             }
 
         }
@@ -38,7 +38,7 @@ public class allButtonTest : MonoBehaviour
     {
         if (testing)
         {
-            Debug.Log("testing - fixed loop");
+            Debug.Log("[testing] - fixed loop");
             try
             {
                 foreach (ControllerManager.ButtonOption button in
@@ -46,17 +46,17 @@ public class allButtonTest : MonoBehaviour
                 {
                     if (ControllerManager.Instance.getFixedButtonPressing(ControllerManager.DeviceOption.leftController, button))
                     {
-                        Debug.Log("testing - left " + button.ToString() + " regular pressed");
+                        Debug.Log("[testing] - left " + button.ToString() + " regular pressed");
                     }
                     if (ControllerManager.Instance.getFixedButtonPressing(ControllerManager.DeviceOption.rightController, button))
                     {
-                        Debug.Log("testing - right " + button.ToString() + " regular pressed");
+                        Debug.Log("[testing] - right " + button.ToString() + " regular pressed");
                     }
                 }
             }
             catch(Exception e)
             {
-                Debug.LogError("testing - " + e);
+                Debug.LogError("[testing] - " + e);
             }
         }
     }

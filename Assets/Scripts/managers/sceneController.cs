@@ -4,23 +4,8 @@ using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 //TODO figure out how to do this with coroutines
-public sealed class SceneController
+public sealed class SceneController : Singleton<SceneController>
 {
-    private static SceneController _instance;
-    private static readonly object padlock = new object();
-    public static SceneController Instance
-    {
-        get
-        {
-            lock (padlock)
-            {
-                if (_instance == null)
-                    _instance = new SceneController();
-                return _instance;
-            }
-        }
-    }
-
 
     private bool isLoading = false;
     public bool IsLoading
