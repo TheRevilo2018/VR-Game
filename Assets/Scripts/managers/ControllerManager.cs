@@ -7,7 +7,7 @@ using UnityEngine.XR;
 
 public sealed class ControllerManager : Singleton<ControllerManager>
 {
-    public enum DeviceOption
+    public enum DeviceOption 
     {
         rightController,
         leftController
@@ -152,7 +152,21 @@ public sealed class ControllerManager : Singleton<ControllerManager>
         }
     }
 
+
     #endregion
+    public Vector2 getStickDirection(DeviceOption op) 
+    {
+        Vector2 inputValue = new Vector2(0,0);
+
+        InputDevices.GetDevicesWithCharacteristics(deviceOptionDict[op], inputDevices);
+
+        if (inputDevices.Count == 0 || !inputDevices[0].TryGetFeatureValue(CommonUsages.primary2DAxis, out inputValue))
+        {
+            //Debug.LogWarning("unity - input device not found: " + inputDevices[0].name + " : " + inputDevices[0].characteristics);
+        }
+
+        return inputValue;
+    }
 
     private bool findButtonPressing(DeviceOption device, ButtonOption button)
     {

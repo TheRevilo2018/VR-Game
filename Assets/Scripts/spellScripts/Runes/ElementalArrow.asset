@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1be3defb57552e47b934de2455952ee, type: 3}
+  m_Name: ElementalArrow
+  m_EditorClassIdentifier: 
+  runeName: ElementalArrow
+  rune: {fileID: 21300000, guid: ec867c84523883f4a8012e79cd554dfd, type: 3}
+  spellLevel: 1
+  resultSpell: {fileID: 5790221618606096459, guid: a2e8b095fec5c664489a5939144ab155,
+    type: 3}
+  anchors:
+  - core: 0
+    maxSpellLevel: 0
+    minSpellLevel: 0
+    location: {x: 0, y: -0.311, z: 0}

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class spellSingleAOE : spellParent
+public class spellSingleAOE : SpellParent
 {
     public ParticleSystem particles;
     private ParticleSystem.EmissionModule emission;

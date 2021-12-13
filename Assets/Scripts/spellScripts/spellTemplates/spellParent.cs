@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class spellParent : grabbableObject
+public abstract class SpellParent : AnchorableObject
 {
     
 }

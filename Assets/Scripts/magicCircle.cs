@@ -7,27 +7,24 @@ public class magicCircle : MonoBehaviour
     public ParticleSystem particles;
     public float deathDuration = 8f;
 
-    bool destroySelf = false;
-    public float currentDuration = 0f;
+    private bool destroySelf = false;
 
-    // Update is called once per frame
-    void Update()
+    public bool DestroySelf
     {
-        if(destroySelf)
+        get
         {
-            currentDuration += Time.deltaTime;
-
-            if (currentDuration > deathDuration)
-            {
-                Destroy(gameObject);
-            }
+            return destroySelf;
         }
     }
 
-    void selfDestruct()
+    public void selfDestruct()
     {
-        destroySelf = true;
-        var temp = particles.emission;
-        temp.enabled = false;
+        if (!destroySelf)
+        {
+            var temp = particles.emission;
+            temp.enabled = false;
+            Destroy(gameObject, deathDuration);
+            destroySelf = true;
+        }
     }
 }

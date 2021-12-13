@@ -20,7 +20,7 @@ public class GameManager : Singleton<GameManager>
 
     void OnLoadOperationComplete(AsyncOperation ao)
     {
-        if(_loadOperations.Contains(ao))
+        if (_loadOperations.Contains(ao))
         {
             _loadOperations.Remove(ao);
 
@@ -38,7 +38,7 @@ public class GameManager : Singleton<GameManager>
     {
         AsyncOperation ao = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
 
-        if(ao == null)
+        if (ao == null)
         {
             Debug.LogError("[GameManager] could not load scene: " + sceneName);
             return;

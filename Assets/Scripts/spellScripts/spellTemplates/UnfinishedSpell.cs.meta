@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: beb678e9d9fa18a49ae8fbe0192f9e69
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - spriteRender: {instanceID: 0}
+  - bluePrint: {instanceID: 0}
+  - elementAnchorType: {fileID: 3978365372035634720, guid: e6010df40b0b6b54c991914bddfb2006,
+      type: 3}
+  - coreAnchorType: {fileID: 3983233458866466625, guid: 9607cbbef96e1ff46a62d46b895ba383,
+      type: 3}
+  - socketType: {fileID: 8688708739853143913, guid: 898dc50ab59d6b94db79635601adb629,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

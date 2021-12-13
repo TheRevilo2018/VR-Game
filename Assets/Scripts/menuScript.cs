@@ -1,25 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class menuScript : grabbableObject
+public class menuScript : SnapAnchorObject
 {
     public string targetScene;
     public string playerScene;
 
     private bool used = false;
     private bool finished = false;
-
-    public override void grab(Transform parent)
-    {
-        base.grab(parent);
-        //show target location
-    }
-
-    public override void drop()
-    {
-        base.drop();
-        //do nothing
-    }
 
     public override void startUsing()
     {
@@ -34,11 +22,6 @@ public class menuScript : grabbableObject
             GameManager.Instance.LoadScene(targetScene);
             finished = true;
         }
-    }
-
-    public override void stopUsing()
-    {
-        //do nothing
     }
 
     private void Update()
