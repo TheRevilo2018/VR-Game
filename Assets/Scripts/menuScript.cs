@@ -3,13 +3,29 @@ using UnityEngine.SceneManagement;
 
 public class menuScript : SnapAnchorObject
 {
+    public Usable Use { get; protected set; }
+
     public string targetScene;
     public string playerScene;
 
     private bool used = false;
     private bool finished = false;
 
-    public override void startUsing()
+    private void Start()
+    {
+        Usable tempUsable;
+        if (gameObject.TryGetComponent(out tempUsable))
+        {
+            Use = tempUsable;
+        }
+        else
+        {
+            Use = gameObject.AddComponent<Usable>();
+        }
+        Use.startUsingEvent.AddListener(startUsing);
+    }
+
+    public void startUsing(Usable use)
     {
         if(!used)
         {

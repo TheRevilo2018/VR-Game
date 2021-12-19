@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Only works for spherical colliders
-public class AnchorSpellSocket : AnchorSingle<SpellSocket>
+public class AnchorSpellSocket : AnchorSingle
 {
     private int _minLevel = 0;
     private int _maxLevel = -1;
@@ -30,11 +30,15 @@ public class AnchorSpellSocket : AnchorSingle<SpellSocket>
         MaxLevel = -1;
     }
 
-    protected override bool spellValid(SpellSocket thing)
+    protected override bool anchorableInput(Anchorable input)
     {
-        if (thing.Core != null && thing.Core.Level >= MinLevel && (MaxLevel == -1 || thing.Core.Level <= MaxLevel))
+        SpellSocket socket;
+        if (input.TryGetComponent(out socket))
         {
-            return true;
+            if (socket.Core != null && socket.Core.Level >= MinLevel && (MaxLevel == -1 || socket.Core.Level <= MaxLevel))
+            {
+                return true;
+            }
         }
 
         return false;

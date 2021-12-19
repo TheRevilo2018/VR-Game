@@ -1,17 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public abstract class grabbableObject : MonoBehaviour
+public class Grabbable : MonoBehaviour
 {
     protected Transform location;
     protected Transform parentLoc;
     protected Rigidbody body;
     public float maxAngularVelocity = 20f;
 
-    public UnityEvent<grabbableObject> dropEvent;
-    public UnityEvent<grabbableObject> grabEvent;
+    public UnityEvent<Grabbable> dropEvent;
+    public UnityEvent<Grabbable> grabEvent;
 
     public bool Held
     {
@@ -42,15 +40,6 @@ public abstract class grabbableObject : MonoBehaviour
             eulerRot *= Mathf.Deg2Rad;
             body.angularVelocity = eulerRot / Time.fixedDeltaTime;
         }
-    }
-
-    public virtual void startUsing()
-    {
-        //do nothing
-    }
-    public virtual void stopUsing()
-    {
-        //do nothing
     }
 
     public virtual void grab(Transform parent = null)

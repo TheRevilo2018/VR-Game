@@ -116,11 +116,11 @@ public class UnfinishedSpell : MonoBehaviour
 
             foreach(AnchorElement anchor in elementAnchors)
             {
-                elements.Add(anchor.Contains);
+                elements.Add(anchor.Contains.GetComponent<ElementBaseScript>());
             }
             foreach(AnchorSpellSocket anchor in coreAnchors)
             {
-                cores.Add(anchor.Contains.removeSpellCore());
+                cores.Add(anchor.Contains.GetComponent<SpellSocket>().removeSpellCore());
             }
 
             newSpellCore.Create(elements, cores);

@@ -13,7 +13,9 @@ GameObject:
   - component: {fileID: 3898961527273656392}
   - component: {fileID: 3898961527273656395}
   - component: {fileID: 3898961527273656391}
-  - component: {fileID: 3898961527273656388}
+  - component: {fileID: 6335268894874567104}
+  - component: {fileID: 6674423842664038484}
+  - component: {fileID: 5939078299748235117}
   m_Layer: 0
   m_Name: grabbableParent
   m_TagString: Untagged
@@ -113,7 +115,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &3898961527273656388
+--- !u!114 &6335268894874567104
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,7 +124,85 @@ MonoBehaviour:
   m_GameObject: {fileID: 3898961527273656394}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5867e65b9da4b4c4fb3202f4481af6ca, type: 3}
+  m_Script: {fileID: 11500000, guid: f7ba619d94f88794ba147b3397fa917d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mat: {fileID: 3898961527273656392}
+  maxAngularVelocity: 20
+  dropEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6674423842664038484}
+        m_TargetAssemblyTypeName: Anchorable, Assembly-CSharp
+        m_MethodName: attach
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5939078299748235117}
+        m_TargetAssemblyTypeName: Usable, Assembly-CSharp
+        m_MethodName: stopUsing
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  grabEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6674423842664038484}
+        m_TargetAssemblyTypeName: Anchorable, Assembly-CSharp
+        m_MethodName: dettach
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6674423842664038484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3898961527273656394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8abe1559474471c49bf16bf353499e31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attachEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  detachEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5939078299748235117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3898961527273656394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b20dd8180fd9aa842aaf4f4ee1ff8b1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startUsingEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  stopUsingEvent:
+    m_PersistentCalls:
+      m_Calls: []

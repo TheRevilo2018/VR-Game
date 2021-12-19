@@ -8,7 +8,8 @@ public class grabVR : MonoBehaviour
     public Transform handLoc;
 
     GameObject holdingTarget;
-    grabbableObject grabbedObject;
+    Grabbable grabbedObject;
+    Usable usableObject;
 
     public bool Holding
     {
@@ -26,24 +27,25 @@ public class grabVR : MonoBehaviour
         if (colliders.Length > 0)
         {
             holdingTarget = colliders[0].gameObject;
-            grabbedObject = holdingTarget.GetComponent<grabbableObject>();
+            grabbedObject = holdingTarget.GetComponent<Grabbable>();
+            usableObject = holdingTarget.GetComponent<Usable>();
             grabbedObject.grab(handLoc);
         }
     }
 
     public void startUsing()
     {
-        if(grabbedObject != null)
+        if(usableObject != null)
         {
-            grabbedObject.startUsing();
+            usableObject.startUsing();
         }
     }
 
     public void stopUsing()
     {
-        if (grabbedObject != null)
+        if (usableObject != null)
         {
-            grabbedObject.stopUsing();
+            usableObject.stopUsing();
         }
     }
 
