@@ -1,9 +1,7 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class SpellSocket : SpellParent
+public class SpellOrb : SpellParent
 {
     public SpriteRenderer screen;
     private Transform cameraLocation;
@@ -23,7 +21,6 @@ public class SpellSocket : SpellParent
                 Quaternion rot = new Quaternion();
                 rot.eulerAngles = Vector3.zero;
                 Core.transform.localRotation = rot;
-                //TODO - may need to 0 out rotaion as well
             }
             else
             {
@@ -48,11 +45,6 @@ public class SpellSocket : SpellParent
         cameraLocation = Camera.main.transform;
     }
 
-    protected override void Awake()
-    {
-        base.Awake();
-    }
-
     public void Update()
     {
         screen.transform.LookAt(cameraLocation);
@@ -63,7 +55,7 @@ public class SpellSocket : SpellParent
         base.drop();
         if (Core != null)
         {
-            Core.drop();
+            Core.onDrop();
         }
     }
 
@@ -72,7 +64,7 @@ public class SpellSocket : SpellParent
         base.grab(parent);
         if (Core != null)
         {
-            Core.grab();
+            Core.onGrab();
         }
     }
 

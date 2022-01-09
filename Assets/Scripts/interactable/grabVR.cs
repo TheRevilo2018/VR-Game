@@ -1,14 +1,14 @@
 using System;
 using UnityEngine;
 
-public class grabVR : MonoBehaviour
+public class GrabVR : MonoBehaviour
 {
     public float grabRadius = 0.2f;
     public LayerMask grabLayer;
     public Transform handLoc;
 
     GameObject holdingTarget;
-    Grabbable grabbedObject;
+    IGrabbable grabbedObject;
     Usable usableObject;
 
     public bool Holding
@@ -27,7 +27,7 @@ public class grabVR : MonoBehaviour
         if (colliders.Length > 0)
         {
             holdingTarget = colliders[0].gameObject;
-            grabbedObject = holdingTarget.GetComponent<Grabbable>();
+            grabbedObject = holdingTarget.GetComponent<IGrabbable>();
             usableObject = holdingTarget.GetComponent<Usable>();
             grabbedObject.grab(handLoc);
         }

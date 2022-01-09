@@ -1,15 +1,15 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Grabbable : MonoBehaviour
+public class Grabbable : MonoBehaviour, IGrabbable
 {
     protected Transform location;
     protected Transform parentLoc;
     protected Rigidbody body;
     public float maxAngularVelocity = 20f;
 
-    public UnityEvent<Grabbable> dropEvent;
-    public UnityEvent<Grabbable> grabEvent;
+    public UnityEvent<IGrabbable> DropEvent { get; protected set; }
+    public UnityEvent<IGrabbable> GrabEvent { get; protected set; }
 
     public bool Held
     {
@@ -19,10 +19,13 @@ public class Grabbable : MonoBehaviour
 
     protected virtual void Awake()
     {
+        DropEvent = new UnityEvent<IGrabbable>();
+        GrabEvent = new UnityEvent<IGrabbable>();
+
         location = GetComponent<Transform>();
         body = GetComponent<Rigidbody>();
         body.maxAngularVelocity = maxAngularVelocity;
-        gameObject.layer = LayerMask.NameToLayer("Grabbable");
+        gameObject.layer += LayerMask.NameToLayer("Interactable");
     }
 
     protected void FixedUpdate()
@@ -44,15 +47,15 @@ public class Grabbable : MonoBehaviour
 
     public virtual void grab(Transform parent = null)
     {
-        grabEvent.Invoke(this);
         parentLoc = parent;
         Held = true;
+        GrabEvent.Invoke(this);
     }
 
     public virtual void drop()
     {
-        dropEvent.Invoke(this);
         parentLoc = null;
         Held = false;
+        DropEvent.Invoke(this);
     }
 }

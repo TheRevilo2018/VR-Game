@@ -9,32 +9,29 @@ public class coneSpellController : SpellCore
 
     private void Start()
     {
+        Level = 1;
         emission = cone.emission;
         release();
     }
 
     public override void startUsing()
     {
-        base.startUsing();
         press();
     }
 
     public override void stopUsing()
     {
-        base.stopUsing();
         release();
     }
 
-    public override void drop()
+    public override void onDrop()
     {
-        base.drop();
         release();
     }
 
 
     public override void Create(List<ElementBaseScript> elements, List<SpellCore> cores)
     {
-        base.Create(elements, cores);
         element = elements[0].element;
 
         ParticleSystem.ColorOverLifetimeModule colorOver = cone.colorOverLifetime;

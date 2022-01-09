@@ -9,8 +9,8 @@ public class mainPlayerManager : MonoBehaviour
 {
     public spellHolder holder;
 
-    public grabVR rightGrab;
-    public grabVR leftGrab;
+    public GrabVR rightGrab;
+    public GrabVR leftGrab;
 
     public RuneDrawVR rightDraw;
     public RuneDrawVR leftDraw;
@@ -29,7 +29,7 @@ public class mainPlayerManager : MonoBehaviour
         }
     }
 
-    private void checkHand(devOp hand, grabVR grab, RuneDrawVR draw)
+    private void checkHand(devOp hand, GrabVR grab, RuneDrawVR draw)
     {
         if (grab.Holding)
         {

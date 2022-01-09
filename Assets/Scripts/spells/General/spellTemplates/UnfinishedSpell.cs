@@ -120,11 +120,11 @@ public class UnfinishedSpell : MonoBehaviour
             }
             foreach(AnchorSpellSocket anchor in coreAnchors)
             {
-                cores.Add(anchor.Contains.GetComponent<SpellSocket>().removeSpellCore());
+                cores.Add(anchor.Contains.GetComponent<SpellOrb>().removeSpellCore());
             }
 
             newSpellCore.Create(elements, cores);
-            newSocket.GetComponent<SpellSocket>().setSpellCore(newSpellCore, bluePrint.rune);
+            newSocket.GetComponent<SpellOrb>().setSpellCore(newSpellCore, bluePrint.rune);
         }
         else
         {

@@ -8,10 +8,10 @@ public class SnapAnchorObject : MonoBehaviour
 
     private void Start()
     {
-        Grab.dropEvent.AddListener(drop);
+        Grab.DropEvent.AddListener(drop);
     }
 
-    private void drop(Grabbable grab)
+    private void drop(IGrabbable grab)
     {
         transform.position = homeAnchor.position;
         transform.rotation = homeAnchor.rotation;

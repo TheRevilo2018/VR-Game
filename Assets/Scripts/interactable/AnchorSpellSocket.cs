@@ -32,7 +32,7 @@ public class AnchorSpellSocket : AnchorSingle
 
     protected override bool anchorableInput(Anchorable input)
     {
-        SpellSocket socket;
+        SpellOrb socket;
         if (input.TryGetComponent(out socket))
         {
             if (socket.Core != null && socket.Core.Level >= MinLevel && (MaxLevel == -1 || socket.Core.Level <= MaxLevel))

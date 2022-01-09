@@ -13,27 +13,24 @@ public class dualSwordSpell : SpellCore
 
     private void Start()
     {
+        Level = 1;
         leftEmission = left.emission;
         rightEmission = right.emission;
         release();
     }
 
-    public override void grab()
+    public override void onGrab()
     {
-        base.grab();
         press();
     }
 
-    public override void drop()
+    public override void onDrop()
     {
-        base.drop();
         release();
     }
 
-
     public override void Create(List<ElementBaseScript> elements, List<SpellCore> cores)
     {
-        base.Create(elements, cores);
         leftElement = elements[0].element;
         rightElement = elements[1].element;
 
