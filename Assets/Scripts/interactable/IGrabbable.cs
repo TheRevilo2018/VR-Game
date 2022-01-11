@@ -9,6 +9,7 @@ public interface IGrabbable
     public UnityEvent<IGrabbable> GrabEvent { get; }
 
     public bool Held { get;}
+
     public void grab(Transform parent = null);
     public void drop();
 }

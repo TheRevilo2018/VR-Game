@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class spellHolder : MonoBehaviour
+public class SpellDatabase : Singleton<SpellDatabase>
 {
     //TODO find a better solution for this
     //elementRunes and elements are only used to declare runeElement
@@ -13,8 +13,17 @@ public class spellHolder : MonoBehaviour
     public GameObject baseElement;
     public GameObject baseCore;
 
-    private void Awake()
+    protected void Start()
     {
+        if (elements == null)
+        {
+            elements = new List<Element>();
+        }
+        if (spells == null)
+        {
+            spells = new List<RuneObject>();
+        }
+
         foreach (Element element in elements)
         {
             runeElement.Add(element.name, element);
@@ -35,19 +44,19 @@ public class spellHolder : MonoBehaviour
 
         if (runeElement.TryGetValue(runeName, out returnElement))
         {
-            Debug.Log("[spellHolder] - Asked for a " + runeName + ", came with the element " + returnElement.type.ToString());
+            Debug.Log("[SpellDatabase] - Asked for a " + runeName + ", came with the element " + returnElement.type.ToString());
             returnObject = Instantiate(baseElement, loc.position, loc.rotation);
             returnObject.GetComponent<ElementBaseScript>().addElement(returnElement);
         }
         else if (runeCore.TryGetValue(runeName, out returnRune))
         {
-            Debug.Log("[spellHolder] - Asked for a " + runeName + ", came with the spell core " + returnRune.runeName);
+            Debug.Log("[SpellDatabase] - Asked for a " + runeName + ", came with the spell core " + returnRune.runeName);
             returnObject = Instantiate(baseCore, loc.position, loc.rotation);
             returnObject.GetComponent<UnfinishedSpell>().installRuneObject(returnRune);
         }
         else
         {
-            Debug.LogWarning("[spellHolder] rune name " + runeName + " not found");
+            Debug.LogWarning("[SpellDatabase] rune name " + runeName + " not found");
         }
 
 

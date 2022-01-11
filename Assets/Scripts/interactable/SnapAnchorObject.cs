@@ -3,11 +3,21 @@ using UnityEngine;
 public class SnapAnchorObject : MonoBehaviour
 {
     public Transform homeAnchor;
-    public Grabbable Grab { get; protected set; }
+    public Grabbable Grab { get; protected set; } = null;
     public bool Held { get; protected set; }
 
-    private void Start()
+    protected virtual void Start()
     {
+        Grabbable installGrabbable;
+        if (gameObject.TryGetComponent(out installGrabbable))
+        {
+            Grab = installGrabbable;
+        }
+        else
+        {
+            Grab = gameObject.AddComponent<Grabbable>();
+        }
+
         Grab.DropEvent.AddListener(drop);
     }
 
@@ -15,6 +25,7 @@ public class SnapAnchorObject : MonoBehaviour
     {
         transform.position = homeAnchor.position;
         transform.rotation = homeAnchor.rotation;
+        gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
         Held = false;
     }
 }

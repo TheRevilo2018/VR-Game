@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6753073947750722320}
   - component: {fileID: 8712921427123387083}
   - component: {fileID: 966144896830848082}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ElementBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45ea0accdf3816d48a8446790b3af1df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAngularVelocity: 20
+  _usable: {fileID: 0}
+  _grabbable: {fileID: 0}
+  _anchorable: {fileID: 0}
   element: {fileID: 0}
   particles: {fileID: 7265555989375654063}
 --- !u!54 &966144896830848082
@@ -140,7 +142,7 @@ GameObject:
   - component: {fileID: 887628304298770252}
   - component: {fileID: 7265555989375654063}
   - component: {fileID: 418172075856437155}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}

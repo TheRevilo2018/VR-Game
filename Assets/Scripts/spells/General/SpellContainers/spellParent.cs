@@ -13,7 +13,7 @@ public abstract class SpellParent : MonoBehaviour
     public  Grabbable GrabbableScript { get { return _grabbable; } }
     public Anchorable AnchorableScript { get { return _anchorable; } }
 
-    protected virtual void Awake()
+    protected virtual void Start()
     {
         if (!gameObject.TryGetComponent(out _usable))
         {
@@ -48,4 +48,5 @@ public abstract class SpellParent : MonoBehaviour
     {
         _usable.stopUsing();
     }
+
 }

@@ -28,6 +28,18 @@ public class Grabbable : MonoBehaviour, IGrabbable
         gameObject.layer += LayerMask.NameToLayer("Interactable");
     }
 
+    protected virtual void Start()
+    {
+        bool foundCollider = body.GetComponents<Collider>().Length > 0 || 
+                             body.GetComponentsInChildren<Collider>().Length > 0||
+                             body.GetComponentsInParent<Collider>().Length > 0;
+
+        if (!foundCollider)
+        {
+            Debug.LogWarning("[Grabbable] - couldn't find a collider on object");
+        }
+    }
+
     protected void FixedUpdate()
     {
         if (parentLoc != null)

@@ -43,6 +43,9 @@ ExportedObj/
 *.opendb
 *.VC.db
 
+# Unity test scene init files
+Assets/InitTestScene*
+
 # Unity3D generated meta files
 *.pidb.meta
 *.pdb.meta

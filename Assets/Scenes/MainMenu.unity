@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.0037868917, g: 0.004709519, b: 0.0065812673, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -592,6 +592,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ArenaSphere
+      objectReference: {fileID: 0}
+    - target: {fileID: 1999402539593920608, guid: 34a97e3cc66654340b4278e3c000a863,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1999402539593920638, guid: 34a97e3cc66654340b4278e3c000a863,
         type: 3}

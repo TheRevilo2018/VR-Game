@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1999402539593920610}
   - component: {fileID: 1999402539593920611}
   - component: {fileID: 1999402539593920638}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: menuSphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,6 +125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e55be3c18f5dcf4d980d39bfa0a2511, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAngularVelocity: 20
+  homeAnchor: {fileID: 0}
   targetScene: 
   playerScene: Persistent

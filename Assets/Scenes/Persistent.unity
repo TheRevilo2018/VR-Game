@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731703, g: 0.13414727, b: 0.12107852, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028328, g: 0.22571322, b: 0.30692163, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5057,9 +5057,9 @@ GameObject:
   m_Component:
   - component: {fileID: 223974228}
   - component: {fileID: 223974227}
-  - component: {fileID: 223974229}
   - component: {fileID: 223974232}
   - component: {fileID: 223974231}
+  - component: {fileID: 223974230}
   m_Layer: 0
   m_Name: PlayerRig
   m_TagString: Untagged
@@ -5097,9 +5097,9 @@ Transform:
   m_Children:
   - {fileID: 40919615}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &223974229
+--- !u!114 &223974230
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5108,13 +5108,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 223974226}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 701144e52a265f945a0c008f51690e8b, type: 3}
+  m_Script: {fileID: 11500000, guid: 2d83b8d3b59ab824480f07d8339914fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recivers:
-  - {fileID: 223974226}
-  - {fileID: 317832498}
-  - {fileID: 1318335315}
+  rightParticles: {fileID: 222756343}
+  leftParticles: {fileID: 547789376}
+  addingRunes: 0
+  minPoints: 12
+  runeCircle: {fileID: 8024471631964814270, guid: 65cf301d20b7adb4585d9618f7272df9,
+    type: 3}
 --- !u!114 &223974231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5127,13 +5129,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d77eb5344908bb24ea09a648b31fc93b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  holder: {fileID: 223974232}
   rightGrab: {fileID: 317832500}
   leftGrab: {fileID: 1318335317}
-  rightDraw: {fileID: 317832499}
-  leftDraw: {fileID: 1318335316}
-  runeCircle: {fileID: 8024471631964814270, guid: b02a189ed21d7fd438b7cb8df4ef8e83,
-    type: 3}
+  magic: {fileID: 223974230}
 --- !u!114 &223974232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5174,7 +5172,6 @@ GameObject:
   - component: {fileID: 317832502}
   - component: {fileID: 317832501}
   - component: {fileID: 317832500}
-  - component: {fileID: 317832499}
   m_Layer: 0
   m_Name: PayerRightHand
   m_TagString: Untagged
@@ -5182,21 +5179,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &317832499
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 317832498}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d83b8d3b59ab824480f07d8339914fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  particles: {fileID: 222756343}
-  minPoints: 12
-  addingRunes: 0
 --- !u!114 &317832500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5210,9 +5192,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grabRadius: 0.2
-  grabLayer:
+  layerMask:
     serializedVersion: 2
-    m_Bits: 768
+    m_Bits: 256
   handLoc: {fileID: 222756345}
 --- !u!114 &317832501
 MonoBehaviour:
@@ -10473,7 +10455,6 @@ GameObject:
   - component: {fileID: 1318335319}
   - component: {fileID: 1318335318}
   - component: {fileID: 1318335317}
-  - component: {fileID: 1318335316}
   m_Layer: 0
   m_Name: PlayerLeftHand
   m_TagString: Untagged
@@ -10481,21 +10462,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1318335316
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1318335315}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d83b8d3b59ab824480f07d8339914fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  particles: {fileID: 547789376}
-  minPoints: 12
-  addingRunes: 0
 --- !u!114 &1318335317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10509,9 +10475,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grabRadius: 0.2
-  grabLayer:
+  layerMask:
     serializedVersion: 2
-    m_Bits: 768
+    m_Bits: 256
   handLoc: {fileID: 547789378}
 --- !u!114 &1318335318
 MonoBehaviour:
@@ -10608,7 +10574,6 @@ GameObject:
   - component: {fileID: 1473729772}
   - component: {fileID: 1473729773}
   - component: {fileID: 1473729774}
-  - component: {fileID: 1473729775}
   m_Layer: 0
   m_Name: GameManagerObject
   m_TagString: Untagged
@@ -10628,7 +10593,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1473729773
 MonoBehaviour:
@@ -10654,19 +10619,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbdf1ffd702cd544eabba2cc3df5cef9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1473729775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1473729771}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d7be60033435494ab604e9fab6567e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  testing: 0
 --- !u!4 &2019581753 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 88c8685b8754a4e4e8e55b7277437bf9,

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class menuScript : SnapAnchorObject
+public class MenuScript : SnapAnchorObject
 {
     public Usable Use { get; protected set; }
 
@@ -11,7 +11,7 @@ public class menuScript : SnapAnchorObject
     private bool used = false;
     private bool finished = false;
 
-    private void Start()
+    protected override void Start()
     {
         Usable tempUsable;
         if (gameObject.TryGetComponent(out tempUsable))
@@ -22,7 +22,10 @@ public class menuScript : SnapAnchorObject
         {
             Use = gameObject.AddComponent<Usable>();
         }
+
         Use.startUsingEvent.AddListener(startUsing);
+
+        base.Start();
     }
 
     public void startUsing(Usable use)
@@ -42,7 +45,8 @@ public class menuScript : SnapAnchorObject
 
     private void Update()
     {
-        if(finished)
+        Debug.Log("[MenuScript] start - layer: " + gameObject.layer);
+        if (finished)
         {
             Destroy(gameObject);
         }

@@ -1,10 +1,10 @@
-using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GrabVR : MonoBehaviour
 {
     public float grabRadius = 0.2f;
-    public LayerMask grabLayer;
+    //public LayerMask layerMask;
     public Transform handLoc;
 
     GameObject holdingTarget;
@@ -19,17 +19,26 @@ public class GrabVR : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        Debug.LogWarning("[GrabVR] - This grabs objects in every layer");
+    }
 
+    //TODO - figure out how to properly apply layers to this
     public void grab()
     {
-        Collider[] colliders = Physics.OverlapSphere(handLoc.position, grabRadius, grabLayer);
+        Collider[] colliders = Physics.OverlapSphere(handLoc.position, grabRadius);
 
         if (colliders.Length > 0)
         {
-            holdingTarget = colliders[0].gameObject;
-            grabbedObject = holdingTarget.GetComponent<IGrabbable>();
-            usableObject = holdingTarget.GetComponent<Usable>();
-            grabbedObject.grab(handLoc);
+            IGrabbable tempGrab = null;
+            if (colliders[0].gameObject.TryGetComponent(out tempGrab))
+            {
+                holdingTarget = colliders[0].gameObject;
+                grabbedObject = tempGrab;
+                usableObject = holdingTarget.GetComponent<Usable>();
+                grabbedObject.grab(handLoc);
+            }
         }
     }
 

@@ -17,6 +17,31 @@ public class GrabbableTests
     }
 
     [UnityTest]
+    public IEnumerator WarningNoCollider()
+    {
+        GameObject testObject = new GameObject();
+        testObject.AddComponent<Rigidbody>();
+        testObject.AddComponent<Grabbable>();
+
+        yield return null;
+
+        LogAssert.Expect(LogType.Warning, "[Grabbable] - couldn't find a collider on object");
+    }
+
+    [UnityTest]
+    public IEnumerator ColliderNoWarning()
+    {
+        GameObject testObject = new GameObject();
+        testObject.AddComponent<Rigidbody>();
+        testObject.AddComponent<Grabbable>();
+        testObject.AddComponent<SphereCollider>();
+
+        yield return null;
+
+        LogAssert.NoUnexpectedReceived();
+    }
+
+    [UnityTest]
     public IEnumerator CheckUsingProperty()
     {
         GameObject testObject = new GameObject();
@@ -75,5 +100,25 @@ public class GrabbableTests
 
         Assert.AreEqual(correctStartEvents, startEvents);
         Assert.AreEqual(correctStopEvents, stopEvents);
+    }
+
+
+    [UnityTest]
+    public IEnumerator CheckIGrabbable()
+    {
+        GameObject testObject = new GameObject();
+        testObject.AddComponent<Rigidbody>();
+        testObject.AddComponent<Grabbable>();
+        IGrabbable grabbable = testObject.GetComponent<IGrabbable>();
+
+        yield return null;
+
+        Assert.IsFalse(grabbable.Held);
+        grabbable.grab();
+        Assert.IsTrue(grabbable.Held);
+        grabbable.drop();
+        Assert.IsFalse(grabbable.Held);
+
+        yield return null;
     }
 }

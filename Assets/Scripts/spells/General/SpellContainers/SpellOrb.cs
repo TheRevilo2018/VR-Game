@@ -40,9 +40,10 @@ public class SpellOrb : SpellParent
         return Core;
     }
 
-    public void Start()
+    protected override void Start()
     {
         cameraLocation = Camera.main.transform;
+        base.Start();
     }
 
     public void Update()
