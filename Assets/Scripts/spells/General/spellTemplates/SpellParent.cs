@@ -3,11 +3,11 @@ using UnityEngine;
 public abstract class SpellParent : MonoBehaviour
 {
     [SerializeField]
-    private Usable _usable = null;
+    protected Usable _usable = null;
     [SerializeField]
-    private Grabbable _grabbable = null;
+    protected Grabbable _grabbable = null;
     [SerializeField]
-    private Anchorable _anchorable = null;
+    protected Anchorable _anchorable = null;
 
     public Usable UsableScript { get { return _usable; }}
     public  Grabbable GrabbableScript { get { return _grabbable; } }
@@ -27,26 +27,50 @@ public abstract class SpellParent : MonoBehaviour
         {
             _anchorable = gameObject.AddComponent<Anchorable>();
         }
+
+        //add event calls
+        _grabbable.GrabEvent.AddListener(OnGrabEvent);
+        _grabbable.DropEvent.AddListener(OnDropEvent);
+        _usable.StartUsingEvent.AddListener(OnStartUsingEvent);
+        _usable.StopUsingEvent.AddListener(OnStopUsingEvent);
     }
 
-    public virtual void grab(Transform parent = null)
+    public void grab(Transform parent = null)
     {
         _grabbable.grab(parent);
     }
 
-    public virtual void drop()
+    public void drop()
     {
         _grabbable.drop();
     }
 
-    public virtual void startUsing()
+    public void startUsing()
     {
         _usable.startUsing();
     }
 
-    public virtual void stopUsing()
+    public void stopUsing()
     {
         _usable.stopUsing();
     }
 
+
+    #region OnEventCall
+    protected virtual void OnGrabEvent(IGrabbable grabbable)
+    {
+        _anchorable.tryDetach();
+    }
+
+    protected virtual void OnDropEvent(IGrabbable grabbable)
+    {
+        _anchorable.tryAttach();
+    }
+
+    protected virtual void OnStartUsingEvent(Usable usable)
+    {    }
+
+    protected virtual void OnStopUsingEvent(Usable usable)
+    {    }
+    #endregion
 }

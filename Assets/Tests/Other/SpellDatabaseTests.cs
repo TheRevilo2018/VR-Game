@@ -29,5 +29,6 @@ public class SpellDatabaseTests
         Assert.IsTrue(testSpell.TryGetComponent<Collider>(out _));
         Assert.IsTrue(testSpell.TryGetComponent<ElementBaseScript>(out _));
         Assert.IsTrue(testSpell.TryGetComponent<Grabbable>(out _));
+        Assert.IsTrue(testSpell.TryGetComponent<Anchorable>(out _));
     }
 }

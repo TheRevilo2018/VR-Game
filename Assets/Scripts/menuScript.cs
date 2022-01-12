@@ -23,7 +23,7 @@ public class MenuScript : SnapAnchorObject
             Use = gameObject.AddComponent<Usable>();
         }
 
-        Use.startUsingEvent.AddListener(startUsing);
+        Use.StartUsingEvent.AddListener(startUsing);
 
         base.Start();
     }
@@ -45,7 +45,6 @@ public class MenuScript : SnapAnchorObject
 
     private void Update()
     {
-        Debug.Log("[MenuScript] start - layer: " + gameObject.layer);
         if (finished)
         {
             Destroy(gameObject);

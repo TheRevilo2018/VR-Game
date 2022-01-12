@@ -5,19 +5,19 @@ using UnityEngine.Events;
 
 public class Usable : MonoBehaviour
 {
-    public UnityEvent<Usable> startUsingEvent = new UnityEvent<Usable>();
-    public UnityEvent<Usable> stopUsingEvent = new UnityEvent<Usable>();
+    public UnityEvent<Usable> StartUsingEvent { get; protected set; } = new UnityEvent<Usable>();
+    public UnityEvent<Usable> StopUsingEvent { get; protected set; } = new UnityEvent<Usable>();
 
     public bool CurrentlyUsing { get; private set; } = false;
 
     public virtual void startUsing()
     {
         CurrentlyUsing = true;
-        startUsingEvent.Invoke(this);
+        StartUsingEvent.Invoke(this);
     }
     public virtual void stopUsing()
     {
         CurrentlyUsing = false;
-        stopUsingEvent.Invoke(this);
+        StopUsingEvent.Invoke(this);
     }
 }

@@ -51,39 +51,41 @@ public class SpellOrb : SpellParent
         screen.transform.LookAt(cameraLocation);
     }
 
-    public override void drop()
+    #region OnEventCall
+    protected override void OnGrabEvent(IGrabbable grabbable)
     {
-        base.drop();
-        if (Core != null)
-        {
-            Core.onDrop();
-        }
-    }
-
-    public override void grab(Transform parent = null)
-    {
-        base.grab(parent);
+        base.OnGrabEvent(grabbable);
         if (Core != null)
         {
             Core.onGrab();
         }
     }
 
-    public override void startUsing()
+    protected override void OnDropEvent(IGrabbable grabbable)
     {
-        base.startUsing();
+        base.OnDropEvent(grabbable);
+        if (Core != null)
+        {
+            Core.onDrop();
+        }
+    }
+
+    protected override void OnStartUsingEvent(Usable usable)
+    {
+        base.OnStartUsingEvent(usable);
         if (Core != null)
         {
             Core.startUsing();
         }
     }
 
-    public override void stopUsing()
+    protected override void OnStopUsingEvent(Usable usable)
     {
-        base.stopUsing();
+        base.OnStopUsingEvent(usable);
         if (Core != null)
         {
             Core.stopUsing();
         }
     }
+    #endregion
 }

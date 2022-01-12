@@ -23,10 +23,12 @@ public class AnchorSingle: MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Trigger Enter " + other.name);
         Anchorable anchorable;
         if (other.TryGetComponent(out anchorable))
         {
-            anchorable.attachEvent.AddListener(AttachObject);
+            Debug.Log("Found anchorable " + other.name);
+            anchorable.AttachRequestEvent.AddListener(AttachObject);
         }
     }
 
@@ -35,18 +37,19 @@ public class AnchorSingle: MonoBehaviour
         Anchorable anchorable;
         if (other.TryGetComponent(out anchorable))
         {
-            anchorable.attachEvent.RemoveListener(AttachObject);
+            anchorable.AttachRequestEvent.RemoveListener(AttachObject);
         }
     }
 
     public virtual void AttachObject(Anchorable input)
     {
-        if (Contains == null && anchorableInput(input))
+        Debug.Log("Attach request results: " + !Full + " " + anchorableInput(input));
+        if (!Full && anchorableInput(input))
         {
             Rigidbody body = input.gameObject.GetComponent<Rigidbody>();
 
-            input.attachEvent.RemoveListener(AttachObject);
-            input.detachEvent.AddListener(detachObject);
+            input.AttachRequestEvent.RemoveListener(AttachObject);
+            input.DetachRequestEvent.AddListener(detachObject);
             Contains = input;
             input.transform.SetParent(transform);
             input.transform.localPosition = new Vector3(0, 0, 0);
@@ -58,8 +61,8 @@ public class AnchorSingle: MonoBehaviour
 
     public virtual void detachObject(Anchorable thing)
     {
-        thing.attachEvent.AddListener(AttachObject);
-        thing.detachEvent.RemoveListener(detachObject);
+        thing.AttachRequestEvent.AddListener(AttachObject);
+        thing.DetachRequestEvent.RemoveListener(detachObject);
         Contains = null;
         thing.transform.SetParent(null);
         thing.gameObject.GetComponent<Rigidbody>().isKinematic = false;

@@ -3,20 +3,22 @@ using UnityEngine.Events;
 
 public class Anchorable : MonoBehaviour
 {
-    public bool Attched { get; protected set; }
+    public bool Attached { get; set; } = false;
 
-    public UnityEvent<Anchorable> attachEvent = new UnityEvent<Anchorable>();
-    public UnityEvent<Anchorable> detachEvent = new UnityEvent<Anchorable>();
+    public UnityEvent<Anchorable> AttachRequestEvent { get; protected set; } = new UnityEvent<Anchorable>();
+    public UnityEvent<Anchorable> DetachRequestEvent { get; protected set; } = new UnityEvent<Anchorable>();
 
-    public virtual void attach()
+    public virtual void tryAttach()
     {
-        Attched = true;
-        attachEvent.Invoke(this);
+        Debug.Log("attach event called");
+        if (!Attached)
+        {
+            AttachRequestEvent.Invoke(this);
+        }
     }
 
-    public virtual void detach()
+    public virtual void tryDetach()
     {
-        Attched = false;
-        detachEvent.Invoke(this);
+        DetachRequestEvent.Invoke(this);
     }
 }

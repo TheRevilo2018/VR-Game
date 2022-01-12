@@ -6,8 +6,7 @@ public class AnchorSingleSpell : AnchorSingle
 {
     protected override bool anchorableInput(Anchorable input)
     {
-        SpellParent socket;
-        if (input.TryGetComponent(out socket))
+        if (input.TryGetComponent<SpellParent>(out _))
         {
             return true;
         }

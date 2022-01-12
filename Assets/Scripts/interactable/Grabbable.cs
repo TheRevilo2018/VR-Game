@@ -8,8 +8,8 @@ public class Grabbable : MonoBehaviour, IGrabbable
     protected Rigidbody body;
     public float maxAngularVelocity = 20f;
 
-    public UnityEvent<IGrabbable> DropEvent { get; protected set; }
-    public UnityEvent<IGrabbable> GrabEvent { get; protected set; }
+    public UnityEvent<IGrabbable> DropEvent { get; protected set; } = new UnityEvent<IGrabbable>();
+    public UnityEvent<IGrabbable> GrabEvent { get; protected set; } = new UnityEvent<IGrabbable>();
 
     public bool Held
     {
@@ -19,13 +19,9 @@ public class Grabbable : MonoBehaviour, IGrabbable
 
     protected virtual void Awake()
     {
-        DropEvent = new UnityEvent<IGrabbable>();
-        GrabEvent = new UnityEvent<IGrabbable>();
-
         location = GetComponent<Transform>();
         body = GetComponent<Rigidbody>();
         body.maxAngularVelocity = maxAngularVelocity;
-        gameObject.layer += LayerMask.NameToLayer("Interactable");
     }
 
     protected virtual void Start()

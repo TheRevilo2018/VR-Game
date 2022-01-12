@@ -15,59 +15,63 @@ public class AnchorableTests
         yield return null;
     }
 
+    //not a helpful test anymore
+    //[UnityTest]
+    //public IEnumerator CheckAttachedProperty()
+    //{
+    //    GameObject testObject = new GameObject();
+    //    testObject.AddComponent<Anchorable>();
+    //    Anchorable anchorable = testObject.GetComponent<Anchorable>();
+
+    //    yield return null;
+
+    //    Assert.IsFalse(anchorable.Attached);
+    //    anchorable.tryAttach();
+    //    Assert.IsFalse(anchorable.Attached);
+    //    anchorable.tryDetach();
+    //    Assert.IsFalse(anchorable.Attached);
+
+    //    yield return null;
+    //}
+
     [UnityTest]
-    public IEnumerator CheckUsingProperty()
-    {
-        GameObject testObject = new GameObject();
-        testObject.AddComponent<Anchorable>();
-        Anchorable usable = testObject.GetComponent<Anchorable>();
-
-        yield return null;
-
-        Assert.IsFalse(usable.Attched);
-        usable.attach();
-        Assert.IsTrue(usable.Attched);
-        usable.detach();
-        Assert.IsFalse(usable.Attched);
-
-        yield return null;
-    }
-
-    [UnityTest]
-    public IEnumerator CheckUsingEvents()
+    public IEnumerator CheckAnchorableEvents()
     {
         List<bool> startEvents = new List<bool>();
         List<bool> stopEvents = new List<bool>();
         GameObject testObject = new GameObject();
         testObject.AddComponent<Anchorable>();
-        Anchorable usable = testObject.GetComponent<Anchorable>();
+        Anchorable anchorable = testObject.GetComponent<Anchorable>();
 
-        usable.attachEvent.AddListener(delegate (Anchorable e)
+        //the reciver over the event has to notify the anchorable when it got attached and when it didn't
+        anchorable.AttachRequestEvent.AddListener(delegate (Anchorable e)
         {
-            startEvents.Add(e.Attched);
+            e.Attached = true;
+            startEvents.Add(e.Attached);
         });
-        usable.detachEvent.AddListener(delegate (Anchorable e)
+        anchorable.DetachRequestEvent.AddListener(delegate (Anchorable e)
         {
-            stopEvents.Add(e.Attched);
+            e.Attached = false;
+            stopEvents.Add(e.Attached);
         });
         yield return null;
 
-        usable.attach();
+        anchorable.tryAttach();
         yield return null;
 
-        usable.detach();
+        anchorable.tryDetach();
         yield return null;
 
-        usable.detach();
+        anchorable.tryDetach();
         yield return null;
 
-        usable.attach();
-        usable.detach();
+        anchorable.tryAttach();
+        anchorable.tryDetach();
 
         yield return null;
 
         List<bool> correctStartEvents = new List<bool>() { true, true };
-        List<bool> correctStopEvents = new List<bool>() { false, false, false };
+        List<bool> correctStopEvents = new List<bool>() { false, false, false};
 
         Assert.AreEqual(correctStartEvents, startEvents);
         Assert.AreEqual(correctStopEvents, stopEvents);

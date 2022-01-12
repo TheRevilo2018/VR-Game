@@ -27,18 +27,21 @@ public class GrabVR : MonoBehaviour
     //TODO - figure out how to properly apply layers to this
     public void grab()
     {
-        Collider[] colliders = Physics.OverlapSphere(handLoc.position, grabRadius);
+        Collider[] colliders = Physics.OverlapSphere(handLoc.position, grabRadius/*, layerMask*/);
+        int i = 0;
 
-        if (colliders.Length > 0)
+        while (colliders.Length > i && !Holding)
         {
-            IGrabbable tempGrab = null;
-            if (colliders[0].gameObject.TryGetComponent(out tempGrab))
+            IGrabbable tempGrab;
+            if (colliders[i].gameObject.TryGetComponent(out tempGrab))
             {
-                holdingTarget = colliders[0].gameObject;
+                holdingTarget = colliders[i].gameObject;
                 grabbedObject = tempGrab;
                 usableObject = holdingTarget.GetComponent<Usable>();
                 grabbedObject.grab(handLoc);
             }
+
+            i++;
         }
     }
 

@@ -42,11 +42,11 @@ public class UsableTests
         testObject.AddComponent<Usable>();
         Usable usable = testObject.GetComponent<Usable>();
 
-        usable.startUsingEvent.AddListener(delegate (Usable e)
+        usable.StartUsingEvent.AddListener(delegate (Usable e)
         {
             startEvents.Add(e.CurrentlyUsing);
         });
-        usable.stopUsingEvent.AddListener(delegate (Usable e)
+        usable.StopUsingEvent.AddListener(delegate (Usable e)
         {
             stopEvents.Add(e.CurrentlyUsing);
         });

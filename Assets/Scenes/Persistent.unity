@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028328, g: 0.22571322, b: 0.30692163, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731703, g: 0.13414727, b: 0.12107852, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5192,9 +5192,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grabRadius: 0.2
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 256
   handLoc: {fileID: 222756345}
 --- !u!114 &317832501
 MonoBehaviour:
@@ -10379,6 +10376,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpellInventoryAnchor
       objectReference: {fileID: 0}
+    - target: {fileID: 8100859617995104009, guid: f874ca50439e70642a830fcc9ca9563e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8100859617995104022, guid: f874ca50439e70642a830fcc9ca9563e,
         type: 3}
       propertyPath: m_RootOrder
@@ -10475,9 +10477,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grabRadius: 0.2
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 256
   handLoc: {fileID: 547789378}
 --- !u!114 &1318335318
 MonoBehaviour:
@@ -10642,6 +10641,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SpellInventoryAnchor
+      objectReference: {fileID: 0}
+    - target: {fileID: 8100859617995104009, guid: f874ca50439e70642a830fcc9ca9563e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8100859617995104022, guid: f874ca50439e70642a830fcc9ca9563e,
         type: 3}
